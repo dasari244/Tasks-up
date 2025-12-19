@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    background-color: #020617;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+    min-height: 100vh;
+}
+
+.to-do-list {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 4rem;
+    color: white;
+}
+
+button {
+    border: none;
+}
+
+.add-button {
+    background-color: hsla(258, 94%, 69%, 0.582);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.add-button:hover {
+    background-color: #8a5cf6d2;
+}
+
+ol {
+    padding: 0;
+}
+
+/* ---------------- LIST ITEMS FIXED ---------------- */
+li {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #020617;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+    text-align: center;
+    margin: 1rem;
+    text-align: left;
+}
+
+/* text expands but icons stay right */
+.actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 18px;
+    align-items: center;
+}
+
+/* icon group */
+.actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* delete and edit styles */
+.delete-button {
+    background: transparent;
+    border: none;
+    color: hsl(215, 16%, 47%);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.edit-button {
+    background: transparent;
+    border: none;
+    color: hsl(215, 16%, 47%);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: hsl(0, 85%, 68%);
+}
+
+.edit-button:hover {
+    color: hsl(0, 0%, 90%);
+}
+
+/* ------------ TEXT INPUT ------------- */
+input[type="text"] {
+    background: rgba(15, 23, 42, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 18px;
+    border-radius: 12px;
+    width: 55%;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+/* INLINE EDIT SECTION */
+.edit-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+/* input inside editing mode (smaller) */
+.edit-section input[type="text"] {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 10px 14px;
+}
+
+/* save and cancel buttons */
+.save-button,
+.cancel-button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* text wrapper (left side) */
+.text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* normal mode layout (text + icons horizontal) */
+.view-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* space between date & icons */
+}
+
+.date {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+/* Checkbox styles */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #94a3b8;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #8a5cf6;
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ------------------ Status of tasks ------------------ */
+.status-bar {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.status-btn {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: #94a3b8;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.status-btn:hover {
+    border-color: rgba(139, 92, 246, 0.8);
+    color: white;
+}
+
+.status-btn.active {
+    background: rgba(139, 92, 246, 0.8);
+    color: white;
+    border-color: rgba(139, 92, 246, 1);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+
+.save-button {
+    background-color: hsla(258, 94%, 69%, 0.582);
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #8a5cf6d2;
+}
+
+.cancel-button {
+    background-color: transparent;
+    color: hsl(215, 16%, 47%);
+}
+
+input:focus {
+    border-color: #8b5cf6;
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+/* ---------- MOBILE FIXES ------------ */
+@media (max-width: 600px) {
+
+    .to-do-list {
+        margin-top: 40px;
+        padding: 0 12px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .add-button {
+        width: 100%;
+    }
+
+    li {
+        font-size: 1.4rem;
+        padding: 14px;
+    }
+
+    .delete-button,
+    .edit-button {
+        font-size: 1.6rem;
+    }
+}
