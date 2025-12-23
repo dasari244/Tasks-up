@@ -271,39 +271,197 @@ input:focus {
 }
 
 /* ---------- MOBILE FIXES ------------ */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     .to-do-list {
-        margin-top: 40px;
-        padding: 0 12px;
+        margin-top: 20px;
+        padding: 0 16px;
+        box-sizing: border-box;
     }
 
     h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        margin-bottom: 20px;
     }
 
     input[type="text"] {
         width: 100%;
         font-size: 1rem;
+        padding: 14px 16px;
+        box-sizing: border-box;
     }
 
     form {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        padding: 0 8px;
     }
 
     .add-button {
         width: 100%;
+        padding: 14px;
+        font-size: 1.1rem;
+    }
+
+    ol {
+        padding: 0;
+        margin: 0;
     }
 
     li {
-        font-size: 1.4rem;
-        padding: 14px;
+        font-size: 1rem;
+        padding: 12px 14px;
+        margin: 8px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .view-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .text {
+        font-size: 1rem;
+        text-align: left;
+        word-break: break-word;
+    }
+
+    .meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .date {
+        font-size: 0.9rem;
     }
 
     .delete-button,
     .edit-button {
+        font-size: 1.4rem;
+        padding: 4px;
+    }
+
+    .actions {
+        gap: 12px;
+    }
+
+    /* Status bar - wrap on mobile */
+    .status-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .status-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .task-count {
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    /* Checkbox */
+    .checkbox-container {
+        margin-right: 10px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Edit section */
+    .edit-section {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .edit-section input[type="text"] {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+
+    .save-button,
+    .cancel-button {
+        padding: 10px 16px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+    h1 {
         font-size: 1.6rem;
     }
+
+    li {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .status-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* In-app notification toast for mobile */
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+    z-index: 9999;
+    animation: slideDown 0.3s ease-out;
+    max-width: 90%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.notification-toast .toast-title {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.notification-toast .toast-body {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.notification-toast.hiding {
+    animation: slideUp 0.3s ease-in forwards;
 }

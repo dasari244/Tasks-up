@@ -100,8 +100,29 @@ function TodoList() {
     const [notificationPermission, setNotificationPermission] = useState(
         "Notification" in window ? Notification.permission : "denied"
     );
+    const [toast, setToast] = useState(null); // In-app toast notification
     const notifiedTasksRef = useRef(new Set()); // Track which tasks have been notified
     const activeCount = tasks.filter((t) => !t.completed).length;
+
+    // Show in-app toast notification (works on all devices including mobile)
+    function showToast(task) {
+        setToast({
+            title: "⏰ Task Reminder!",
+            body: `It's time for: ${task.text}`
+        });
+
+        // Play sound alert
+        try {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleVovVo/X7NFoOQ0untnq4LR6Sihdl9zb1K6NW0xejtXf1dC2mWZXX4jK2+DawaWRc2twgLnL2OXlvcWwj4KEd5y1y9flw7+2spiVk4ubnKnA2Oru59HDs6adj5acpLK+087a2M3CtK+elpmirLm+ztXMvLSsnZqYnaWstb7Q08C3r6Odn6etrrbCzszAvLapo6Kkqa2zurq6trKso6Oip62vtbu5ubiyq6ejpKqtrrK2tra0sauoo6SmqqywtbS0s7Cuq6ekpaiqrLCysrKxr6yppaWnqauusLGysK+tq6ilpqipq66wsLCvramop6aoqaytr7CwsK6sqaenpqiqq62ur6+urKupqKenqKqrrK2urq2sqainp6eoqqutrK2trKuqqKenqKmqq6ytra2sq6qoqKeoqaqrrKytrKuqqKinqKmqq6usrKyrq6mop6eoqaqrq6ysrKuqqainqKmqqqurrKyrq6qpqKeoqamqq6urq6urqamop6ioqaqrq6urq6qpqaioqKmqqqurq6uqqamop6ioqamqq6urqqqpqaiop6ipqaqqq6uqqamoqKeoqampqquqqqmpqKinqKipqaqqqqmpqKioqKipqamqqqmpqKioqKioqampqamqqaiop6ioqKmpqampqKioqKioqampqampqKioqKioqKmpqampqaioqKioqKioqampqampqKioqKioqKipqampqaioqKioqKioqKmpqamoqKioqKioqKipqampqKioqKioqKioqKmpqamoqKioqKioqKioqampqaioqKioqKioqKioqampqKioqKioqKioqKioqKipqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg==');
+            audio.volume = 0.5;
+            audio.play().catch(() => { });
+        } catch (e) { }
+
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+            setToast(null);
+        }, 5000);
+    }
 
     // Request notification permission on mount
     useEffect(() => {
@@ -129,7 +150,12 @@ function TodoList() {
 
                 // Notify if task is due (between -5 seconds and +5 seconds for real-time trigger)
                 if (timeDiff >= -5000 && timeDiff <= 5000) {
+                    // Show in-app toast (works on mobile!)
+                    showToast(task);
+
+                    // Also try browser notification (works on desktop)
                     sendNotification(task);
+
                     notifiedTasksRef.current.add(task.id);
                     console.log(`🔔 Notification sent for: ${task.text} at ${now.toLocaleTimeString()}`);
                 }
@@ -240,6 +266,14 @@ function TodoList() {
 
     return (
         <div className="to-do-list">
+            {/* In-app toast notification for mobile */}
+            {toast && (
+                <div className="notification-toast" onClick={() => setToast(null)}>
+                    <div className="toast-title">{toast.title}</div>
+                    <div className="toast-body">{toast.body}</div>
+                </div>
+            )}
+
             <h1>To-Do-List</h1>
 
             <form onSubmit={addTask}>
