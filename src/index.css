@@ -1,175 +1,194 @@
-/* ============================================
-   TASKS UP - Premium Mobile App Design
-   ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    margin: 0;
+    background-color: #020617;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
     min-height: 100vh;
-    min-height: 100dvh;
-    /* Dynamic viewport height for mobile */
-    color: white;
-    overflow-x: hidden;
 }
 
-/* Safe area for notched phones */
-@supports (padding-top: env(safe-area-inset-top)) {
-    body {
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-    }
-}
-
-/* ============== MAIN CONTAINER ============== */
 .to-do-list {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px 16px;
-    padding-bottom: 100px;
-    /* Space for bottom nav */
-    min-height: 100vh;
-}
-
-/* ============== HEADER ============== */
-h1 {
-    font-size: 2rem;
-    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
+    margin-top: 100px;
 }
 
-/* ============== FORM SECTION ============== */
-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 24px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%);
-    padding: 12px 0;
-}
-
-input[type="text"] {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+h1 {
+    font-size: 4rem;
     color: white;
-    padding: 16px 18px;
-    border-radius: 16px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
-input[type="text"]::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: #a78bfa;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+button {
+    border: none;
 }
 
 .add-button {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    background-color: hsla(258, 94%, 69%, 0.582);
     color: white;
-    padding: 16px 24px;
-    border: none;
-    border-radius: 16px;
+    padding: 12px;
+    border-radius: 12px;
     font-size: 1rem;
-    font-weight: 600;
+}
+
+.add-button:hover {
+    background-color: #8a5cf6d2;
+}
+
+ol {
+    padding: 0;
+}
+
+/* ---------------- LIST ITEMS FIXED ---------------- */
+li {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #020617;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+    text-align: center;
+    margin: 1rem;
+    text-align: left;
+}
+
+/* text expands but icons stay right */
+.actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 18px;
+    align-items: center;
+}
+
+/* icon group */
+.actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* delete and edit styles */
+.delete-button {
+    background: transparent;
+    border: none;
+    color: hsl(215, 16%, 47%);
+    font-size: 2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+}
+
+.edit-button {
+    background: transparent;
+    border: none;
+    color: hsl(215, 16%, 47%);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: hsl(0, 85%, 68%);
+}
+
+.edit-button:hover {
+    color: hsl(0, 0%, 90%);
+}
+
+/* ------------ TEXT INPUT ------------- */
+input[type="text"] {
+    background: rgba(15, 23, 42, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 18px;
+    border-radius: 12px;
+    width: 55%;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+/* INLINE EDIT SECTION */
+.edit-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+/* input inside editing mode (smaller) */
+.edit-section input[type="text"] {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 10px 14px;
+}
+
+/* save and cancel buttons */
+.save-button,
+.cancel-button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* text wrapper (left side) */
+.text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* normal mode layout (text + icons horizontal) */
+.view-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* space between date & icons */
+}
+
+.date {
+    font-size: 1.2rem;
+    color: #94a3b8;
     white-space: nowrap;
 }
 
-.add-button:active {
-    transform: scale(0.95);
-}
-
-/* ============== TASK LIST ============== */
-ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-li:active {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* ============== CHECKBOX ============== */
+/* Checkbox styles */
 .checkbox-container {
-    flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding-top: 2px;
+    gap: 8px;
 }
 
 .checkbox-container input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(139, 92, 246, 0.5);
-    border-radius: 8px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #94a3b8;
+    border-radius: 4px;
     appearance: none;
     -webkit-appearance: none;
-    background: transparent;
+    outline: none;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .checkbox-container input[type="checkbox"]:checked {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
-    border-color: transparent;
+    background-color: #8a5cf6;
 }
 
 .checkbox-container input[type="checkbox"]:checked::after {
-    content: "✓";
+    content: "✔";
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -178,349 +197,273 @@ li:active {
     height: 100%;
 }
 
-/* ============== VIEW SECTION ============== */
-.view-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-}
-
-.text {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #e2e8f0;
-    line-height: 1.4;
-    word-break: break-word;
-}
-
-.meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.date {
-    font-size: 0.8rem;
-    color: #a78bfa;
-    background: rgba(139, 92, 246, 0.15);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.actions {
-    display: flex;
-    gap: 8px;
-}
-
-.edit-button,
-.delete-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #94a3b8;
-    font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.edit-button:active {
-    background: rgba(139, 92, 246, 0.3);
-    color: #a78bfa;
-}
-
-.delete-button:active {
-    background: rgba(239, 68, 68, 0.3);
-    color: #f87171;
-}
-
-/* ============== EDIT SECTION ============== */
-.edit-section {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-}
-
-.edit-section input[type="text"] {
-    flex: 1;
-    min-width: 120px;
-    font-size: 0.95rem;
-    padding: 12px 14px;
-}
-
-.date-input {
-    flex: 0 0 auto;
-    width: 160px !important;
-}
-
-.save-button,
-.cancel-button {
-    border: none;
-    border-radius: 10px;
-    padding: 12px 16px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.save-button {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-}
-
-.cancel-button {
-    background: rgba(255, 255, 255, 0.1);
-    color: #94a3b8;
-}
-
-/* ============== STATUS BAR ============== */
+/* ------------------ Status of tasks ------------------ */
 .status-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(15, 12, 41, 0.95);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 12px 16px;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    z-index: 1000;
-}
-
-.task-count {
-    color: #a78bfa;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 10px 16px;
-    background: rgba(139, 92, 246, 0.15);
-    border-radius: 20px;
+    gap: 14px;
 }
 
 .status-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.4);
     color: #94a3b8;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: 0.25s;
 }
 
-.status-btn:active {
-    transform: scale(0.95);
+.status-btn:hover {
+    border-color: rgba(139, 92, 246, 0.8);
+    color: white;
 }
 
 .status-btn.active {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    background: rgba(139, 92, 246, 0.8);
     color: white;
-    border-color: transparent;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    border-color: rgba(139, 92, 246, 1);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
 }
 
-.clear-btn {
-    background: rgba(239, 68, 68, 0.15);
-    border-color: rgba(239, 68, 68, 0.3);
-    color: #f87171;
-}
 
-.clear-btn:active {
-    background: rgba(239, 68, 68, 0.3);
-}
-
-/* ============== TOAST NOTIFICATION ============== */
-.notification-toast {
-    position: fixed;
-    top: max(20px, env(safe-area-inset-top));
-    left: 16px;
-    right: 16px;
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+.save-button {
+    background-color: hsla(258, 94%, 69%, 0.582);
     color: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
-    z-index: 9999;
-    animation: toastSlide 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    text-align: center;
 }
 
-.toast-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 6px;
+.save-button:hover {
+    background-color: #8a5cf6d2;
 }
 
-.toast-body {
+.cancel-button {
+    background-color: transparent;
+    color: hsl(215, 16%, 47%);
+}
+
+/* ------------------ Count + Clear Button ------------------ */
+.task-count {
+    color: #94a3b8;
     font-size: 1rem;
-    opacity: 0.95;
+    padding: 10px 14px;
 }
 
-@keyframes toastSlide {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* Make Clear button stand out */
+.clear-btn {
+    border-color: rgba(239, 68, 68, 0.6) !important;
+    color: rgba(239, 68, 68, 0.9) !important;
 }
 
-/* ============== EMPTY STATE ============== */
-ol:empty::after {
-    content: "No tasks yet. Add one above! ✨";
-    display: block;
-    text-align: center;
-    color: #64748b;
-    padding: 60px 20px;
-    font-size: 1.1rem;
+.clear-btn:hover {
+    background: rgba(239, 68, 68, 0.8) !important;
+    color: white !important;
+    border-color: rgba(239, 68, 68, 1) !important;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
 }
 
-/* ============== DESKTOP ENHANCEMENTS ============== */
-@media (min-width: 768px) {
+
+input:focus {
+    border-color: #8b5cf6;
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+/* ---------- MOBILE FIXES ------------ */
+@media (max-width: 768px) {
+
     .to-do-list {
-        padding: 40px 24px;
-        padding-bottom: 120px;
+        margin-top: 20px;
+        padding: 0 16px;
+        box-sizing: border-box;
     }
 
     h1 {
-        font-size: 3rem;
-        margin-bottom: 32px;
-    }
-
-    form {
-        gap: 16px;
+        font-size: 2rem;
+        margin-bottom: 20px;
     }
 
     input[type="text"] {
-        padding: 18px 24px;
-        font-size: 1.1rem;
-    }
-
-    .add-button {
-        padding: 18px 32px;
-    }
-
-    li {
-        padding: 20px;
-        margin-bottom: 16px;
-    }
-
-    .text {
-        font-size: 1.1rem;
-    }
-
-    .edit-button,
-    .delete-button {
-        width: 44px;
-        height: 44px;
-        font-size: 1.4rem;
-    }
-
-    .edit-button:hover {
-        background: rgba(139, 92, 246, 0.3);
-        color: #a78bfa;
-    }
-
-    .delete-button:hover {
-        background: rgba(239, 68, 68, 0.3);
-        color: #f87171;
-    }
-
-    .status-bar {
-        padding: 16px 24px;
-    }
-
-    .status-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-    }
-}
-
-/* ============== SMALL PHONES ============== */
-@media (max-width: 380px) {
-    h1 {
-        font-size: 1.6rem;
+        width: 100%;
+        font-size: 1rem;
+        padding: 14px 16px;
+        box-sizing: border-box;
     }
 
     form {
+        display: flex;
         flex-direction: column;
+        gap: 12px;
+        padding: 0 8px;
     }
 
     .add-button {
         width: 100%;
+        padding: 14px;
+        font-size: 1.1rem;
+    }
+
+    ol {
+        padding: 0;
+        margin: 0;
     }
 
     li {
-        padding: 14px;
+        font-size: 1rem;
+        padding: 12px 14px;
+        margin: 8px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .view-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
     }
 
     .text {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        text-align: left;
+        word-break: break-word;
+    }
+
+    .meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .date {
+        font-size: 0.9rem;
+    }
+
+    .delete-button,
+    .edit-button {
+        font-size: 1.4rem;
+        padding: 4px;
+    }
+
+    .actions {
+        gap: 12px;
+    }
+
+    /* Status bar - wrap on mobile */
+    .status-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 8px;
     }
 
     .status-btn {
         padding: 8px 12px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     .task-count {
         width: 100%;
         text-align: center;
+        font-size: 0.9rem;
+    }
+
+    /* Checkbox */
+    .checkbox-container {
+        margin-right: 10px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Edit section */
+    .edit-section {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .edit-section input[type="text"] {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+
+    .save-button,
+    .cancel-button {
+        padding: 10px 16px;
     }
 }
 
-/* ============== SCROLLBAR STYLING ============== */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(139, 92, 246, 0.3);
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(139, 92, 246, 0.5);
-}
-
-/* ============== SELECTION STYLING ============== */
-::selection {
-    background: rgba(139, 92, 246, 0.4);
-    color: white;
-}
-
-/* ============== PWA STANDALONE MODE ============== */
-@media (display-mode: standalone) {
-    body {
-        padding-top: env(safe-area-inset-top);
-    }
-
-    .to-do-list {
-        padding-top: 10px;
-    }
-
+/* Extra small phones */
+@media (max-width: 400px) {
     h1 {
-        margin-top: 10px;
+        font-size: 1.6rem;
     }
+
+    li {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .status-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* In-app notification toast for mobile */
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+    z-index: 9999;
+    animation: slideDown 0.3s ease-out;
+    max-width: 90%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.notification-toast .toast-title {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.notification-toast .toast-body {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.notification-toast.hiding {
+    animation: slideUp 0.3s ease-in forwards;
 }
